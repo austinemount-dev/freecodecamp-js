@@ -1,0 +1,18 @@
+function steamrollArray(arr) {
+  const result = [];
+  
+  function flatten(element) {
+    if (Array.isArray(element)) {
+      // If it's an array, loop through each item and flatten recursively
+      for (let i = 0; i < element.length; i++) {
+        flatten(element[i]);
+      }
+    } else {
+      // If it's not an array, push it to the result
+      result.push(element);
+    }
+  }
+  
+  flatten(arr);
+  return result;
+}

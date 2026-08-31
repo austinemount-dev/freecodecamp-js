@@ -1,0 +1,28 @@
+function smallestCommons(arr) {
+  // Step 1: Sort the array to get the full range
+  const [min, max] = arr.sort((a, b) => a - b);
+  
+  // Step 2: Create an array of all numbers in the range
+  const range = [];
+  for (let i = min; i <= max; i++) {
+    range.push(i);
+  }
+  
+  // Step 3: Function to calculate GCD (Greatest Common Divisor)
+  function gcd(a, b) {
+    while (b !== 0) {
+      const temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+  }
+  
+  // Step 4: Function to calculate LCM (Least Common Multiple)
+  function lcm(a, b) {
+    return (a * b) / gcd(a, b);
+  }
+  
+  // Step 5: Reduce the range to a single LCM
+  return range.reduce((currentLCM, num) => lcm(currentLCM, num));
+}

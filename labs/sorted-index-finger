@@ -1,0 +1,10 @@
+function getIndexToIns(arr, num) {
+  // Step 1: Sort the array in ascending order
+  const sorted = arr.slice().sort((a, b) => a - b);
+  
+  // Step 2: Find the lowest index where num should be inserted
+  const index = sorted.findIndex((element) => element >= num);
+  
+  // Step 3: If no element is greater than or equal to num, return the length of the array
+  return index === -1 ? sorted.length : index;
+}
